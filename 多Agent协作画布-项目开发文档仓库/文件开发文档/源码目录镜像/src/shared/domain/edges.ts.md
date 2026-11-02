@@ -1,0 +1,70 @@
+# src/shared/domain/edges.ts
+
+## 1. 对应代码
+
+- 源码相对路径：`src/shared/domain/edges.ts`。
+- 状态：拟新增代码文件；当前没有产品代码实现。
+- 文件职责：定义唯一持久化的实际边，两个端点必须是会话节点，而不是流程图节点。。
+
+## 2. 当前职责与工作方式
+
+目前尚未创建对应的产品源码。本节为计划中的职责，不把设计当作已实现行为。
+
+RealSessionEdge、ProjectedEdge、edgeId；ProjectedEdge 含 underlyingEdgeIds 与数量。
+
+## 3. 关联功能、需求和流程图节点
+
+- [01.02 真实会话连线](../../../../../流程图/01-图模型与真实连线/01.02-真实会话连线/01.02-真实会话连线总文档.md#task-01)：关联开发任务 T-01。
+- [02.01 全局展开画布](../../../../../流程图/02-双视图投影与画布/02.01-全局展开画布.md#task-01)：关联开发任务 T-01。
+- [05.01 会话间消息派发](../../../../../流程图/05-协作消息与运行状态/05.01-会话间消息派发.md#task-01)：关联开发任务 T-01。
+- [01.02.01 创建真实会话边](../../../../../流程图/01-图模型与真实连线/01.02-真实会话连线/01.02.01-创建真实会话边.md#task-01)：关联开发任务 T-01。
+- [01.02.02 删除与查询真实边](../../../../../流程图/01-图模型与真实连线/01.02-真实会话连线/01.02.02-删除与查询真实边.md#task-01)：关联开发任务 T-01。
+
+## 4. 具体开发计划
+
+<a id="plan"></a>
+
+RealSessionEdge 只保存 sourceSessionNodeId / targetSessionNodeId；ProjectedEdge 是只读查询结果，不写回持久化层。
+
+拟重点涉及：RealSessionEdge、ProjectedEdge、edgeId；ProjectedEdge 含 underlyingEdgeIds 与数量。
+
+### 建议领域类型草案（未实现）
+
+```ts
+interface RealSessionEdge {
+  id: string;
+  sourceSessionNodeId: string; // 一定指向 kind='session' 的节点
+  targetSessionNodeId: string; // 一定指向 kind='session' 的节点
+}
+
+interface ProjectedEdge {
+  sourceVisibleNodeId: string; // 可能是 subflow，但仅用于视图显示
+  targetVisibleNodeId: string;
+  underlyingEdgeIds: string[]; // 在图上展示 ×N
+  readonly: true;
+}
+```
+
+`ProjectedEdge` 是当前视图的派生输出，不能写入 `RealSessionEdge` 表；也不能从它反向推断需要创建哪些真实边。关于连接方向、自环、重复边的业务语义尚待确认，当前类型仅给出建议基线。
+
+## 5. 相关文件与开发顺序
+
+本文件与上述关联节点涉及的其他源码按对应节点任务的依赖关系推进；若修改共享领域类型，应先更新类型契约再调整 UI、存储或 Agent 运行时使用方。
+
+## 6. 注意事项与验证方法
+
+<a id="verification"></a>
+
+- 验证目标：任何真实边都能定位两个会话节点；聚合边无法作为真实边保存。
+- 对新增的产品代码：在真实源码出现后执行单元测试和端到端测试；当前无通过记录。
+- 错误处理、兼容和安全行为以节点开发文档的验收标准为准，不用“已写计划”代替实际验收。
+
+## 7. 当前具体进度
+
+<a id="continue"></a>
+
+待开始。继续位置：从第 4 节按计划创建实际源码，补充测试与结果后再更新上层任务状态。
+
+## 8. 落盘更改记录
+
+暂无实际源码更改记录。后续每次修改按批次追加实际更改、关键符号、原因、验证结果与继续位置。

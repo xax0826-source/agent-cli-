@@ -1,0 +1,13 @@
+%% diagram-id: 02
+%% view: target
+%% node-doc: N02_01 = 02.01-全局展开画布.md
+%% node-doc: N02_02 = 02.02-分层聚合投影.md
+%% node-doc: N02_03 = 02.03-状态明灭渲染.md
+flowchart LR
+    N02_01["02.01 全局展开画布 · 待实现"]
+    N02_02["02.02 分层聚合投影 · 待实现"]
+    N02_03["02.03 状态明灭渲染 · 待实现"]
+    N02_01 -->|真实图输入| N02_02
+    N02_02 -->|聚合边集合| N02_03
+    classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
+    class N02_01,N02_02,N02_03 pending;

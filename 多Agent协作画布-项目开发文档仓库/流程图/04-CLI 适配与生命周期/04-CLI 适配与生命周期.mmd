@@ -1,0 +1,13 @@
+%% diagram-id: 04
+%% view: target
+%% node-doc: N04_01 = 04.01-统一 CLI 适配接口.md
+%% node-doc: N04_02 = 04.02-多会话进程管理.md
+%% node-doc: N04_03 = 04.03-工具调用审批.md
+flowchart LR
+    N04_01["04.01 统一 CLI 适配接口 · 待实现"]
+    N04_02["04.02 多会话进程管理 · 待实现"]
+    N04_03["04.03 工具调用审批 · 待实现"]
+    N04_01 -->|CLI 能力与适配器| N04_02
+    N04_02 -->|待审批工具调用| N04_03
+    classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
+    class N04_01,N04_02,N04_03 pending;
