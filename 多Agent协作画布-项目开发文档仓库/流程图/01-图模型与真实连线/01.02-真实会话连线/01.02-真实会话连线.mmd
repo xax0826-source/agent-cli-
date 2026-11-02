@@ -1,0 +1,10 @@
+%% diagram-id: 01.02
+%% view: target
+%% node-doc: N01_02_01 = 01.02.01-创建真实会话边.md
+%% node-doc: N01_02_02 = 01.02.02-删除与查询真实边.md
+flowchart LR
+    N01_02_01["01.02.01 创建真实会话边 · 待实现"]
+    N01_02_02["01.02.02 删除与查询真实边 · 待实现"]
+    N01_02_01 -->|真实边 ID 与查询| N01_02_02
+    classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
+    class N01_02_01,N01_02_02 pending;

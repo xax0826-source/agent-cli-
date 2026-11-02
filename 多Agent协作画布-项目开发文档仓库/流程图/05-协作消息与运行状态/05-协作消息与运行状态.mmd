@@ -1,0 +1,13 @@
+%% diagram-id: 05
+%% view: target
+%% node-doc: N05_01 = 05.01-会话间消息派发.md
+%% node-doc: N05_02 = 05.02-消息回执与失败处理.md
+%% node-doc: N05_03 = 05.03-运行状态逐级汇总.md
+flowchart LR
+    N05_01["05.01 会话间消息派发 · 待实现"]
+    N05_02["05.02 消息回执与失败处理 · 待实现"]
+    N05_03["05.03 运行状态逐级汇总 · 待实现"]
+    N05_01 -->|消息和投递 ID| N05_02
+    N05_02 -->|活动事件| N05_03
+    classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
+    class N05_01,N05_02,N05_03 pending;

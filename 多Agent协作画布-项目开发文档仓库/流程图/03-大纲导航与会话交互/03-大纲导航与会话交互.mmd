@@ -1,0 +1,13 @@
+%% diagram-id: 03
+%% view: target
+%% node-doc: N03_01 = 03.01-大纲与路径定位.md
+%% node-doc: N03_02 = 03.02-会话管理页面.md
+%% node-doc: N03_03 = 03.03-CLI 与模型选择.md
+flowchart LR
+    N03_01["03.01 大纲与路径定位 · 待实现"]
+    N03_02["03.02 会话管理页面 · 待实现"]
+    N03_03["03.03 CLI 与模型选择 · 待实现"]
+    N03_01 -->|会话定位| N03_02
+    N03_03 -->|有效模型配置| N03_02
+    classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
+    class N03_01,N03_02,N03_03 pending;
