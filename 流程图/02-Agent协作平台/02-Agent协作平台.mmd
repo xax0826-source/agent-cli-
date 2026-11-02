@@ -1,0 +1,9 @@
+%% diagram-id: 02
+%% view: target
+%% node-doc: N02_01 = ./02.01-任务调度节点.md
+%% node-doc: N02_02 = ./02.02-CLI接入节点.md
+flowchart LR
+    N02_01["02.01 任务调度节点 · 待实现"] <--> N02_02["02.02 CLI接入节点 · 待实现"]
+    classDef pending fill:#e5e7eb,stroke:#4b5563,color:#111827;
+    class N02_01 pending;
+    class N02_02 pending;
